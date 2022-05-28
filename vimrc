@@ -1,143 +1,127 @@
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-"                                                                                                "
-"                                          .::::.                                                "
-"                             ___________ :;;;;:`____________                                    "
-"                             \_________/ ?????L \__________/                                    "
-"                               |.....| ????????> :.......'                                      "
-"                               |:::::| $$$$$$"`.:::::::' ,                                      "
-"                              ,|:::::| $$$$"`.:::::::' .OOS.                                    "
-"                            ,7D|;;;;;| $$"`.;;;;;;;' .OOO888S.                                  "
-"                          .GDDD|;;;;;| ?`.;;;;;;;' .OO8DDDDDNNS.                                "
-"                           'DDO|IIIII| .7IIIII7' .DDDDDDDDNNNF`                                 "
-"                             'D|IIIIII7IIIII7' .DDDDDDDDNNNF`                                   "
-"                               |EEEEEEEEEE7' .DDDDDDDNNNNF`                                     "
-"                               |EEEEEEEEZ' .DDDDDDDDNNNF`                                       "
-"                               |888888Z' .DDDDDDDDNNNF`                                         "
-"                               |8888Z' ,DDDDDDDNNNNF`                                           "
-"                               |88Z'    "DNNNNNNN"                                              "
-"                               '"'        "MMMM"                                                "
-"                                            ""                                                  "
-"                                                                                                "
-"      ___    ____                                            __   _         _    ________  ___  "
-"     /   |  / / /  __  ______  __  __   ____  ___  ___  ____/ /  (_)____   | |  / /  _/  |/  /  "
-"    / /| | / / /  / / / / __ \/ / / /  / __ \/ _ \/ _ \/ __  /  / / ___/   | | / // // /|_/ /   "
-"   / ___ |/ / /  / /_/ / /_/ / /_/ /  / / / /  __/  __/ /_/ /  / (__  )    | |/ // // /  / /    "
-"  /_/  |_/_/_/   \__, /\____/\__,_/  /_/ /_/\___/\___/\__,_/  /_/____/     |___/___/_/  /_/     "
-"                   /_/                                                                          "
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+" Specify a directory for plugins
+" " - For Neovim: ~/.local/share/nvim/plugged
+" " - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+Plug 'python-rope/ropevim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'SirVer/ultisnips', { 'commit': 'a909dee82b6eaaa3ae001e27c3e95c58d487d242'}
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
+" /Plug 'ludovicchabant/vim-gutentags'
+Plug 'universal-ctags/ctags'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
+Plug 'airblade/vim-gitgutter'
+Plug 'majutsushi/tagbar'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'tpope/vim-commentary'
+Plug 'tweekmonster/impsort.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'romainl/vim-cool'
+Plug 'tpope/vim-repeat'
+Plug 'neoclide/coc.nvim'
+Plug 'vim-scripts/visualrepeat'
+Plug 'heavenshell/vim-pydocstring'
+" Plug 'thaerkh/vim-workspace'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+" Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
+Plug 'hjson/vim-hjson'
+Plug 'hdima/python-syntax'
+" Plug 'vim-syntastic/syntastic'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'lervag/vimtex'
+Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-dispatch'
+Plug 'morhetz/gruvbox'
+" Plug 'xuhdev/vim-latex-live-preview'
+" Plug 'ncm2/float-preview.nvim'
+" Plug 'puremourning/vimspector'
+" :w
+" Initialize plugin system
+call plug#end()
 
-set nocompatible              " required
-filetype off                  " required
-set hidden
-set showtabline=0
+let g:python_host_prog = '//home/sabih/anaconda3/envs/kiss/bin/python3'
+set termguicolors
+"
+"
+" Theme options
+" set t_Co=256
+" colorscheme Monokai
+" set background=dark    " Setting dark mode
+""" Hilight search and set numbers
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Colorscheme options
+" let g:lucius_style="light"
+" let g:lucius_contrast="low"
+" colo lucius
+" set background=light
+"
+" set background=light    " Setting dark mode
+" let g:gruvbox_italic=0
+" let g:gruvbox_bold=0
+" let g:gruvbox_underline=0
+" let g:gruvbox_italicize_strings=0
+colorscheme gruvbox
+map <leader>vimrc :source ~/.vimrc<cr>
+autocmd bufwritepost .vimrc source //home/sabih/.vimrc
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='hard'
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+syntax on
+" colorscheme onehalflight
+" let g:airline_theme='onehalflight'
 
+" colorscheme Neon
+set background=light
+" colorscheme PaperColor
+let python_highlight_all = 1
+" pydocstring
+nmap <silent> <C-m> <Plug>(pydocstring)
+let g:pydocstring_doq_path = '//home/sabih/anaconda3/envs/kiss/bin/doq'
+let g:pydocstring_templates_dir='//home/sabih/.vim/bundle/vim-pydocstring/test/templates/numpy'
+let g:pydocstring_formatter = 'numpy'
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-"-------------------=== Code/Project navigation ===-------------
-Plugin 'scrooloose/nerdtree'                " Project and file navigation
-Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-Plugin 'majutsushi/tagbar'                  " Class/module browser
-Plugin 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
-Plugin 'mileszs/ack.vim'                    " Ag/Grep
-Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
-Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
-Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
-Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
-Plugin 'neomake/neomake'                    " Asynchronous Linting and Make Framework
-Plugin 'Shougo/deoplete.nvim'               " Asynchronous Completion
-Plugin 'roxma/nvim-yarp'                    " Deoplete Dependency #1
-Plugin 'roxma/vim-hug-neovim-rpc'           " Deoplete Dependency #2
-
-"-------------------=== Other ===-------------------------------
-Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
-Plugin 'flazz/vim-colorschemes'             " Colorschemes
-Plugin 'vimwiki/vimwiki'                    " Personal Wiki
-Plugin 'jreybert/vimagit'                   " Git Operations
-Plugin 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
-Plugin 'chriskempson/base16-vim'            " Base 16 colors
-Plugin 'ryanoasis/vim-devicons'             " Dev Icons
-
-"-------------------=== Snippets support ===--------------------
-Plugin 'garbas/vim-snipmate'                " Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'       " dependencies #1
-Plugin 'tomtom/tlib_vim'                    " dependencies #2
-Plugin 'honza/vim-snippets'                 " snippets repo
-
-"-------------------=== Languages support ===-------------------
-Plugin 'scrooloose/nerdcommenter'           " Easy code documentation
-Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-Plugin 'w0rp/ale'
-
-"-------------------=== Python  ===-----------------------------
-" Plugin 'python-mode/python-mode'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'mitsuhiko/vim-python-combined'
-Plugin 'mitsuhiko/vim-jinja'
-Plugin 'jmcantrell/vim-virtualenv'
-
-Plugin 'jonathanfilip/vim-lucius'  " nice white colortheme
-Plugin 'davidhalter/jedi-vim'   " jedi for python
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
-Plugin 'kien/ctrlp.vim'  " fuzzy search files
-Plugin 'tweekmonster/impsort.vim'  " color and sort imports
-Plugin 'wsdjeg/FlyGrep.vim'  " awesome grep on the fly
-Plugin 'airblade/vim-gitgutter'  " show git changes to files in gutter
-Plugin 'tpope/vim-commentary'  "comment-out by gc
-Plugin 'ncm2/ncm2'  " awesome autocomplete plugin
-Plugin 'HansPinckaers/ncm2-jedi'  " fast python completion (use ncm2 if you want type info or snippet support)
-Plugin 'ncm2/ncm2-bufword'  " buffer keyword completion
-Plugin 'ncm2/ncm2-path'  " filepath completion
-
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-
-
-" Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
-Plugin 'lervag/vimtex'
-" Plugin 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" Plugin 'conornewton/vim-latex-preview', { 'for': 'tex' }
-
-Plugin 'tell-k/vim-autopep8'
-Plugin 'heavenshell/vim-pydocstring'
-Plugin 'vim-scripts/visualrepeat'
-Plugin 'morhetz/gruvbox'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype on
-filetype plugin on
-filetype plugin indent on
-
-"=====================================================
-"" General settings
-"=====================================================
-" if filereadable(expand("~/.vimrc_background"))
-"     source ~/.vimrc_background
-" endif
-set conceallevel=0
-set encoding=utf-8
-" let base16colorspace=256
-set t_Co=256                                " 256 colors
-set guifont=mononoki\ Nerd\ Font\ 18
-let g:airline_theme='base16_spacemacs'             " set airline theme
-syntax enable                               " enable syntax highlighting
-let g:pydocstring_templates_dir='//home/ali/.vim/bundle/vim-pydocstring/test/templates/numpy'
-set pastetoggle=<F2>
-" map <leader>vimrc :tabe ~/.vim/.vimrc<cr>
-
-let g:python3_host_prog = '//home/ali/anaconda3/bin/python'
-
-" Additional mappings for Esc (useful for MacBook with touch bar)
 :let mapleader = "'" 
-inoremap jj <Esc>
+
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+imap jj <Esc>
+map <leader>a :action $SelectAll<CR>
+map <leader>b :action GotoDeclaration<CR>
+map <leader>c :action $Copy<CR>
+map <leader>d :action EditorDuplicate<CR>
+map <leader>e :action RecentFiles<CR>
+map <leader>f :action Find<CR>
+map <leader>g :action GotoLine<CR>
+map <leader>h :action TypeHierarchy<CR>
+map <leader>i :action ImplementMethods<CR>
+map <leader>m :action EditorScrollToCenter<CR>
+map <leader>n :action FileChooser.NewFolder<CR>
+map <leader>o :action OverrideMethods<CR>
+map <leader>p :action ParameterInfo<CR>
+map <leader>q :action QuickJavaDoc<CR>
+map <leader>r :action Replace<CR>
+map <leader>s :action SaveAll<CR>
+map <leader>t :action Vcs.UpdateProject<CR>
+map <leader>u :action GotoSuperMethod<CR>
+map <leader>v :action $Paste<CR>
+map <leader>w :action EditorSelectWord<CR>
+map <leader>x :action $Cut<CR>
+map <leader>y :action EditorDeleteLine<CR>
+map <leader>[ :action EditorCodeBlockStart<CR>
+map <leader>] :action EditorCodeBlockEnd<CR>
+
+
+set timeoutlen=1000
+" inoremap jj <Esc>
 inoremap jk <Esc>
 :vmap < <gv
 :vmap > >gv 
@@ -158,6 +142,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map <C-s> :g/^\s\+$/s/\s\+//
+
 set splitbelow
 set splitright
 map <Leader>a :bprev<Return>
@@ -169,11 +155,8 @@ map <Leader>w <esc>:tabprevious<CR>
 map <Leader>q <esc>:tabnext<CR>
 
 "" Show the buffer number in the status line.
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+nnoremap <silent> <Plug>(MyPluginVisual)
 
-
-" set pyxversion=0
-let g:loaded_python_provider = 1
 set shell=/bin/bash
 set number                                  " show line numbers
 set ruler
@@ -198,92 +181,227 @@ set backspace=indent,eol,start              " backspace removes all (indents, EO
 
 set scrolloff=20                            " let 10 lines before/after cursor during scroll
 
-set clipboard=unnamed                       " use system clipboard
 
-set exrc                                    " enable usage of additional .vimrc files from working directory
-set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
+set hlsearch
+highlight Search guibg=#af005f ctermbg=125
+"""" clear highlight with <esc> after a search
+nnoremap <C-h> :noh<return>
+set number
 
-"=====================================================
-"" New Python Settings
-"=====================================================
+set cc=88
 
+" autocmd BufWritePost *.py execute ':Black'
 
-" ncm2 settings
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=menuone,noselect,noinsert
-" make it FAST
-let ncm2#popup_delay = 5
-let ncm2#complete_length = [[1,1]]
-let g:ncm2#matcher = 'substrfuzzy'
-
-set pumheight=5
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent> <expr> <CR> (pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : "\<CR>"
-
-let g:airline_powerline_fonts = 1
-let g:airline_section_y = ""
+" Airline configuration
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
 
-" Airline settings
-" do not show error/warning section
-let g:airline_section_error = ""
-let g:airline_section_warning = ""
+" Nerdtree configuration
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$']
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+" Switching between buffers
+" Set commands to switching between buffers
+:nnoremap <Tab> :bnext!<CR>
+:nnoremap <S-Tab> :bprevious!<CR>
+:nnoremap <C-X> :bp<bar>sp<bar>bn<bar>bd<CR>
 
-" theicfire .vimrc tips
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = " " " Leader is the space key
-let g:mapleader = " "
-let maplocalleader = "`"
-let g:maplocalleader = "`"
-nnoremap <SPACE> <Nop>
+" File searchs
+map <C-p> :Files<CR>
 
-"auto indent for brackets
-nmap <leader>w :w!<cr>
-nmap <leader>q :lcl<cr>:q<cr>
-nnoremap <leader>h :nohlsearch<Bar>:echo<CR>
+" Ale Configuration
+"""" Better formatting fo worp/ale
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%...code...%]'
+"""" Enable completion where available.
+let g:ale_completion_enabled = 1
+""" Customize linters that are turned on
+let g:ale_linters = {
+	\   'python': ['flake8'],
+	\}
+let g:ale_set_highlights = 1
 
-" FlyGrep settings
-nnoremap <leader>s :FlyGrep<cr>
+" Fix keys
+set backspace=2
 
-" easy breakpoint python
-au FileType python map <silent> <leader>b ofrom pudb import set_trace; set_trace()<esc>
-au FileType python map <silent> <leader>B Ofrom pudb import set_trace; set_trace()<esc>
-au FileType python map <silent> <leader>j ofrom pdb import set_trace; set_trace()<esc>
-au FileType python map <silent> <leader>J Ofrom pdb import set_trace; set_trace()<esc>
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsListSnippets='<c-tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
-" ale options
-let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
-let g:ale_python_pylint_options = '-j 0 --max-line-length=120'
-let g:ale_list_window_size = 4
-let g:ale_sign_column_always = 0
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = '1'
+nmap <F8> :TagbarToggle<CR>
 
-" Options are in .pylintrc!
-highlight VertSplit ctermbg=253
 
-let g:ale_sign_error = '‼'
-let g:ale_sign_warning = '∙'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = '0'
-let g:ale_lint_on_save = '1'
-nmap <silent> <C-M> <Plug>(ale_previous_wrap)
-nmap <silent> <C-m> <Plug>(ale_next_wrap)
 
-" mapping to make movements operate on 1 screen line in wrap mode
-function! ScreenMovement(movement)
-   if &wrap
-      return "g" . a:movement
-   else
-      return a:movement
+" Remove all trailing whitespace by pressing C-S
+nnoremap <C-S> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Fix enter key behavior quickfix window
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" Neovim terminal emulator options
+" au TermOpen * setlocal nonumber norelativenumber
+
+" Make sure Vim returns to the same line when you reopen a file.
+" augroup line_return
+  " au!
+  " au BufReadPost *
+    " \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    " \     execute 'normal! g`"zvzz' |
+    " \ endif
+" augroup END
+
+vnoremap u <nop>
+nnoremap Y y$
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" Quit locationlist if that is the last buffer
+autocmd QuitPre * if empty(&bt) | lclose | endif
+
+" Easy breakpoint python
+au FileType python map <silent> gb ofrom pdb import set_trace; set_trace()<esc>
+
+" I never use folding and find typing [] awkward, so map z to ] and zz to [:
+nmap zz [
+nmap z ]
+nnoremap ]. z.
+omap zz [
+omap z ]
+xmap zz [
+xmap z ]
+
+" Speed
+set regexpengine=1
+
+" Show total number of matches while searching
+let g:CoolTotalMatches = 1
+
+" Python syntax enable everything
+let g:python_highlight_all = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" FZF.vim
+nmap <leader>l :BLines<cr>
+nmap <leader>;l :BLines<cr><c-P>
+nmap <leader>b :Buffers<cr>
+nmap <leader>f :Files<cr>
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+nmap <leader>S :Tags<cr>
+nmap <leader>s :BTags<cr>
+nmap <leader>p :History<cr>
+nmap <leader>/ :Ag!<cr>
+nmap <leader>;/ :Ag!<cr><c-P>
+nmap <space>r :Rg<CR>
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let $FZF_DEFAULT_OPTS = '--layout=reverse  --margin=1,3'
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+  let height = &lines
+  let width = float2nr(&columns)
+  let col = float2nr((&columns - width * 0.8) / 2)
+  let horizontal = float2nr((&columns - width) / 2)
+
+  let opts = {
+          \ 'relative': 'editor',
+          \ 'row': (height - 8) / 2 - 3,
+          \ 'col': (width - 75) / 2,
+          \ 'width': 75,
+          \ 'height': 8
+          \ }
+  let win= nvim_open_win(buf, v:true, opts)
+  call setwinvar(win, '&winhl', 'Normal:FZFBackground')
+endfunction
+
+" Customize fzf colors to match your color scheme
+hi FZFHighlight ctermbg=255
+hi FZFBackground ctermbg=254
+let g:fzf_colors =
+  \ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'FZFBackground'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'FZFHighlight', 'FZFHighlight'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Location list
+
+" command!  LToggle call s:LListToggle()
+" command!  LFillForce call s:FillLList()
+
+function! s:LListToggle() abort
+   let buffer_count_before = s:BufferCount()
+
+   " Location list can't be closed if there's cursor in it, so we need
+   " to call lclose twice to move cursor to the main pane
+   silent! lclose
+   silent! lclose
+
+   if s:BufferCount() == buffer_count_before
+      execute "silent! lopen 2"
+      execute "silent! set nonumber norelativenumber"
    endif
+endfunction
+
+function! s:LListForceShow() abort
+   execute "call setloclist(0, [], 'r')"
+endfunction
+
+function! s:BufferCount() abort
+   return len(filter(range(1, bufnr('$')), 'bufwinnr(v:val) != -1'))
+endfunction
+
+" nnoremap <silent> <space>a  :LToggle<cr>
+" autocmd BufReadPost *.py :LFillForce
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" move with wrap
+
+" Mapping to make movements operate on 1 screen line in wrap mode
+function! ScreenMovement(movement)
+  if &wrap
+    return "g" . a:movement
+  else
+    return a:movement
+  endif
 endfunction
 
 onoremap <silent> <expr> j ScreenMovement("j")
@@ -297,253 +415,171 @@ nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
-" highlight python and self function
-autocmd BufEnter * syntax match Type /\v\.[a-zA-Z0-9_]+\ze(\[|\s|$|,|\]|\)|\.|:)/hs=s+1
-autocmd BufEnter * syntax match pythonFunction /\v[[:alnum:]_]+\ze(\s?\()/
-hi def link pythonFunction Function
-autocmd BufEnter * syn match Self "\(\W\|^\)\@<=self\(\.\)\@="
-highlight self ctermfg=239
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" coc.nvim settings
+" if hidden is not set, TextEdit might fail.
+set hidden
 
-" jedi options
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "1"
-let g:jedi#show_call_signatures_delay = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode
-let g:jedi#enable_speed_debugging=0
+" Some servers have issues with backup files, see #649
+set nowritebackup
 
-" Impsort option
-hi pythonImportedObject ctermfg=127
-hi pythonImportedFuncDef ctermfg=127
-hi pythonImportedClassDef ctermfg=127
+" let g:gutentags_trace = 1
 
-" Remove all trailing whitespace by pressing C-S
-nnoremap <C-S> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" You will have bad experience for diagnostic messages when it's default 4000.
+" set updatetime=1000
 
-" # NOTE: this break shortcuts with []
-" nnoremap [[ [m
-" nnoremap ]] ]m
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
-nnoremap <silent><nowait> [ [[
-nnoremap <silent><nowait> ] ]]
-
-function! MakeBracketMaps()
-    nnoremap <silent><nowait><buffer> [ :<c-u>exe 'normal '.v:count.'[m'<cr>
-    nnoremap <silent><nowait><buffer> ] :<c-u>exe 'normal '.v:count.']m'<cr>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-augroup bracketmaps
-    autocmd!
-    autocmd FileType python call MakeBracketMaps()
-augroup END
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" neovim options
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-nnoremap <C-a> <Esc>
-nnoremap <C-x> <Esc>
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 
-" vimgutter options
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_map_keys = 0
+" Or use `complete_info` if your vim support it, like:
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" ctrl p options
-let g:ctrlp_custom_ignore = '\v\.(npy|jpg|pyc|so|dll)$'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Use `[c` and `]c` for navigate diagnostics
+" nmap <silent> [l <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
+nmap <silent> [l <Plug>(coc-diagnostic-prev-error)
+nmap <silent> ]l <Plug>(coc-diagnostic-next-error)
 
-tab sball
-set switchbuf=useopen
-set laststatus=2
-nmap <F9> :bprev<CR>
-nmap <F10> :bnext<CR>
-nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-"=====================================================
-"" AirLine settings
-"=====================================================
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#formatter='unique_tail'
-let g:airline_powerline_fonts=1
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-"=====================================================
-"" TagBar settings
-"=====================================================
-let g:tagbar_autofocus=0
-let g:tagbar_width=42
-autocmd BufEnter *.py :call tagbar#autoopen(0)
-autocmd BufWinLeave *.py :TagbarClose
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-"=====================================================
-"" NERDTree settings
-"=====================================================
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NERDTree
-let NERDTreeWinSize=40
-autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
-nmap " :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=0
+set updatetime=100
 
-"=====================================================
-"" NERDComment Settings 
-"=====================================================
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
+augroup mygroup
+  autocmd!
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder silent! call CocActionAsync('showSignatureHelp')
+  autocmd CursorHold, CursorHoldI * call CocActionAsync('showSignatureHelp')
+augroup end
 
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+xmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>S  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Color tweaks
+" Change colorscheme Coc errors/warning/hints
+hi Pmenu ctermbg=253 ctermfg=240
+hi Search cterm=bold ctermbg=None ctermfg=0
+hi IncSearch ctermfg=0 ctermbg=254 cterm=bold
+hi VertSplit ctermbg=253
 
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
+hi default CocSubtle term=None
+hi default link CocErrorHighlight CocSubtle
+hi default link CocWarningHighlight CocSubtle
+hi default link CocInfoHighlight CocSubtle
+hi default link CocHintHighlight CocSubtle
+"
+hi CocWarningHighlight cterm=underline
+" hi CocInfoHighlight ctermbg=254
+hi CocErrorHighlight cterm=underline ctermbg=88
+" hi CocHintHighlight ctermbg=254
+"
+hi Function cterm=None ctermfg=34
+hi Statement cterm=None ctermfg=32
+hi Type cterm=None ctermfg=30
 
+" Impsort option
+hi pythonImportedObject ctermfg=126 cterm=None
+hi pythonImportedFuncDef ctermfg=126 cterm=None
+hi pythonImportedClassDef ctermfg=126 cterm=None
+hi LineNR ctermbg=254
+hi CursorLineNR ctermbg=254
+hi Function ctermfg=35
+hi Number ctermfg=173
+hi String ctermfg=173
+hi Constant ctermfg=173
+hi Keyword ctermfg=31
 
-"=====================================================
-"" DevIcon Settings
-"=====================================================
-" loading the plugin 
-let g:webdevicons_enable = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" vimspector
+let g:vimspector_enable_mappings='HUMAN'
+nmap <leader> dd: call vimspector#Launch()<CR>
 
-" adding the flags to NERDTree 
-let g:webdevicons_enable_nerdtree = 1
-
-" adding to vim-airline's tabline
-let g:webdevicons_enable_airline_tabline = 1
-
-" adding to vim-airline's statusline
-let g:webdevicons_enable_airline_statusline = 1
-
-" turn on/off file node glyph decorations (not particularly useful)
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-
-" use double-width(1) or single-width(0) glyphs 
-" only manipulates padding, has no effect on terminal or set(guifont) font
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-
-" whether or not to show the nerdtree brackets around flags 
-let g:webdevicons_conceal_nerdtree_brackets = 0
-
-" the amount of space to use after the glyph character (default ' ')
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
-" Force extra padding in NERDTree so that the filetype icons line up vertically
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1 
-
-" change the default character when no match found
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
-
-" set a byte character marker (BOM) utf-8 symbol when retrieving file encoding
-" disabled by default with no value
-let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
-
-" enable folder/directory glyph flag (disabled by default with 0)
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-" enable open and close folder/directory glyph flags (disabled by default with 0)
-let g:DevIconsEnableFoldersOpenClose = 1
-
-" enable pattern matching glyphs on folder/directory (enabled by default with 1)
-let g:DevIconsEnableFolderPatternMatching = 1
-
-" enable file extension pattern matching glyphs on folder/directory (disabled by default with 0)
-let g:DevIconsEnableFolderExtensionPatternMatching = 0
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" C++ cpp
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_c_checkers = ['cpplint']
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" The following two lines are optional. Configure it to your liking!
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
-"=====================================================
-"" SnipMate settings
-"=====================================================
-let g:snippets_dir='~/.vim/vim-snippets/snippets'
-
-"=====================================================
-"" Rainbow Parentheses Autoload 
-"=====================================================
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-"====================================================
-"" Vimtex Latex Settings.
-"====================================================
-
-let g:vimtex_view_method = 'mupdf'
-autocmd Filetype tex setl updatetime=1
-let g:vimtex_view_general_viewer = 'okular'
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Latex
 " let g:livepreview_previewer = 'okular'
-" let g:livepreview_engine = 'pdflatex'
-" let g:livepreview_cursorhold_recompile = 0
-" let g:latex_pdf_viewer="okular"
-" let g:latex_engine="pdflatex"
-
-"=====================================================
-"" Indent Guides Settings 
-"=====================================================
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
-"=====================================================
-"" Python settings
-"=====================================================
-
-" python executables for different plugins
+" let g:vimtex_view_method = 'okular'
+let g:vimtex_view_method = 'zathura'
 
 
-" highlight 'long' lines (>= 80 symbols) in python files
-augroup vimrc_autocmds
-    autocmd!
-    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
-    autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=80
-augroup END
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
+function! CocErrors() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, ' ' . info['error'] . ' ')
+  endif
+  return join(msgs, ' ')
+endfunction
 
-" code folding
+function! CocWarnings() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'warning', 0)
+    call add(msgs, ' ' . info['warning'] . ' ')
+  endif
+  return join(msgs, ' ')
+endfunction
 
-" pep8 indents
+function! CocStatus() abort
+  return get(g:, 'coc_status', '')
+endfunction
 
-" code running
 
-let g:ale_sign_column_always = 0
-let g:ale_emit_conflict_warnings = 0                                                                         
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-
-imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
-
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
-
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
-
-nmap <silent> <C-m> <Plug>(pydocstring)
-
-colorscheme gruvbox
-set background=light    " Setting dark mode
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_light='hard'
-map <leader>vimrc :source ~/.vimrc<cr>
-autocmd bufwritepost .vimrc source //home/ali/.vimrc
